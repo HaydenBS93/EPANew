@@ -1,16 +1,8 @@
 #!/bin/bash
 
-# Navigate to the repository
-cd /root/EPANew || exit
+# Define log file path
+LOG_FILE="/root/EPANew/command_log.txt"
 
-# Log the command and its timestamp
-echo "[$(date)] $*" >> command_log.txt
+# Append the command with timestamp to the log file
+echo "[$(date)] $BASH_COMMAND" >> "$LOG_FILE"
 
-# Stage the changes
-git add command_log.txt
-
-# Commit the changes with the command as the message
-git commit -m "Ran command: $*"
-
-# Push the changes to the repository
-git push origin master
